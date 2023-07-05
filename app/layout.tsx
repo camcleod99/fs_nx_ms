@@ -1,7 +1,7 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import '@/Styles/globals.css'
+import NavMenu from "@/Components/NavMenu";
+import React from "react";
+import AuthProvider from "@/app/AuthProvider";
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,8 +14,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+      <AuthProvider>
+      <html lang="en">
+        <body>
+          <NavMenu />
+          {children}
+        </body>
+      </html>
+      </AuthProvider>
   )
 }
